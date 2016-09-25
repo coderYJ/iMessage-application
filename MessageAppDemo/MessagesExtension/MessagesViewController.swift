@@ -5,13 +5,16 @@
 //  Created by simplyou on 2016/9/20.
 //  Copyright © 2016年 coderYJ. All rights reserved.
 //
+
+
+
 /*
  虽然没有严格限制,但是苹果建议的表情文件大小:
  1. Small: 100 x 100 pt @3x scale (300 x 300 pixel image)
  2. Medium: 136 x 136 pt @3x scale (378 x 378 pixel image)
  3. Large: 206 x 206 pt @3x scale (618 x 618 pixel image)
  
- 也有其他的一些限制, 表情包的大小:
+ 表情包的大小:
  1. 文件中images不可以大于500kb;
  2. iamge不可以小于100 x 100 pt (300 x 300 pixels).
  3. iamge不可以大于206 x 206 pt (618 x 618 pixels).
@@ -25,6 +28,15 @@
  4. Info.plist : 配置一些扩展信息;
  */
 
+/* 文档注释
+ //        // 这个就是一个image
+ //        let image = #imageLiteral(resourceName: "02.png")
+ //        // 一个image
+ //        let image1 = #imageLiteral(resourceName: "hello")
+ //
+ //        let imageV =  UIImageView(image: image)
+ //        view.addSubview(imageV)
+ */
 import UIKit
 import Messages
 
@@ -32,13 +44,32 @@ class MessagesViewController: MSMessagesAppViewController {
     
     // 创建一个MSSticker数组来存储我们的表情包
     var stickers = [MSSticker]()
+    /**
+      这个方法是用来初始化表情数据的
+     - returns: 返回值
+     - throws: 抛出异常
+     */
+
     
+    // 微信公众号关注iOS精汇 coderYJ
+    
+    // 文本注释快捷键
+    //    option + command + /
+    
+    
+    
+    /// 单行文本注释
+    ///
+    /// 多行文本注释
     private func loadStickers() {
+        
+       let image =  #imageLiteral(resourceName: "hello")
+        
+        
         
         for i in 1...31 {
             // 语法变了
             let str = String(format: "%02d", i)
-//            print(str)
             if let url = Bundle.main.url(forResource: str, withExtension: "gif") {
                 
                 do {
@@ -52,6 +83,16 @@ class MessagesViewController: MSMessagesAppViewController {
     }
     
     // 初始化一个MSStickerBrowserViewController作为根视图
+    
+    /**
+     这个是一个方法
+     - throws: 抛出异常
+     - returns: 野指针
+     */
+    
+    /// 这是一个很牛xx的功能
+    ///
+    /// 你好
     private func setupStickerBrowser() {
         /*
          case small 小图模式
@@ -67,14 +108,12 @@ class MessagesViewController: MSMessagesAppViewController {
         controller.stickerBrowserView.backgroundColor = UIColor.yellow
         // 设置数据源
         controller.stickerBrowserView.dataSource = self
-        
         // 布局
         view.topAnchor.constraint(equalTo: controller.view.topAnchor).isActive = true
         view.bottomAnchor.constraint(equalTo: controller.view.bottomAnchor).isActive = true
         view.leftAnchor.constraint(equalTo: controller.view.leftAnchor).isActive = true
         view.rightAnchor.constraint(equalTo: controller.view.rightAnchor).isActive = true
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,7 +122,41 @@ class MessagesViewController: MSMessagesAppViewController {
         loadStickers()
         
         // 创建本地表情包控制器
-        setupStickerBrowser()
+//        setupStickerBrowser()
+        
+        setupAddBtn()
+        
+        // <UILabel: 0x7f8e21e07180; frame = (0 0; 1000 1000); text = 'Hello World'; clipsToBounds = YES; opaque = NO; autoresize = RM+BM; userInteractionEnabled = NO; layer = <_UILabelLayer: 0x608000282a80>>
+//        for view in view.subviews {
+////            print(view)
+//            if view is UILabel {
+//                (view as! UILabel).text = "你好"
+////                view.removeFromSuperview()
+//            }
+//        }
+    }
+    /*
+     * 添加一个button
+     */
+    func setupAddBtn() {
+        let btn = UIButton(type: .contactAdd)
+        view.addSubview(btn)
+        
+        btn.addTarget(self, action: #selector(btnOnClick), for: .touchUpInside)
+    }
+    
+    // button 点击调用的方法
+    func btnOnClick() {
+        print("hello")
+        
+        // activeConversation 会话对象
+        activeConversation?.insertText("hello", completionHandler: { (error) in
+            print("插入信息成功")
+        })
+        // 插入一个表情
+        activeConversation?.insert(stickers[0], completionHandler: { (error) in
+            print("123")
+        })
     }
     // 当发生内存警告的时候调用
     override func didReceiveMemoryWarning() {
@@ -125,14 +198,14 @@ class MessagesViewController: MSMessagesAppViewController {
     // 开始发送
     override func didStartSending(_ message: MSMessage, conversation: MSConversation) {
         // Called when the user taps the send button.
-        print("willTransition")
+        print("didStartSending")
     }
     // 取消发送
     override func didCancelSending(_ message: MSMessage, conversation: MSConversation) {
         // Called when the user deletes the message without sending it.
     
         // Use this to clean up state related to the deleted message.
-        print("willTransition")
+        print("didCancelSending")
         
     }
     // 将要过度,可以改变风格

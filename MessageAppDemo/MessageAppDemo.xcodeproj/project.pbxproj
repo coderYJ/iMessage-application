@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		07143BB31D97692400358777 /* 02.png in Resources */ = {isa = PBXBuildFile; fileRef = 07143BB21D97692400358777 /* 02.png */; };
 		07D5D6681D92715D00C78679 /* 01.gif in Resources */ = {isa = PBXBuildFile; fileRef = 07D5D6491D92715D00C78679 /* 01.gif */; };
 		07D5D6691D92715D00C78679 /* 02.gif in Resources */ = {isa = PBXBuildFile; fileRef = 07D5D64A1D92715D00C78679 /* 02.gif */; };
 		07D5D66A1D92715D00C78679 /* 03.gif in Resources */ = {isa = PBXBuildFile; fileRef = 07D5D64B1D92715D00C78679 /* 03.gif */; };
@@ -71,6 +72,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		07143BB21D97692400358777 /* 02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 02.png; sourceTree = "<group>"; };
 		07D5D6491D92715D00C78679 /* 01.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 01.gif; sourceTree = "<group>"; };
 		07D5D64A1D92715D00C78679 /* 02.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 02.gif; sourceTree = "<group>"; };
 		07D5D64B1D92715D00C78679 /* 03.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 03.gif; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 		07F307DF1D90FA42006F911B /* MessagesExtension */ = {
 			isa = PBXGroup;
 			children = (
+				07143BB21D97692400358777 /* 02.png */,
 				07D5D6481D92714000C78679 /* images */,
 				07F307E01D90FA42006F911B /* MessagesViewController.swift */,
 				07F307E21D90FA42006F911B /* MainInterface.storyboard */,
@@ -323,6 +326,7 @@
 				07F307E61D90FA42006F911B /* Assets.xcassets in Resources */,
 				07D5D6741D92715D00C78679 /* 13.gif in Resources */,
 				07D5D6861D92715D00C78679 /* 31.gif in Resources */,
+				07143BB31D97692400358777 /* 02.png in Resources */,
 				07F307E41D90FA42006F911B /* MainInterface.storyboard in Resources */,
 				07D5D6791D92715D00C78679 /* 18.gif in Resources */,
 				07D5D6731D92715D00C78679 /* 12.gif in Resources */,
